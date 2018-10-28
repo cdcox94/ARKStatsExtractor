@@ -1667,7 +1667,7 @@
             // creatureInfoInputTester
             // 
             this.creatureInfoInputTester.ARKID = ((long)(0));
-            this.creatureInfoInputTester.Cooldown = new System.DateTime(2018, 8, 22, 23, 16, 55, 200);
+            this.creatureInfoInputTester.Cooldown = new System.DateTime(2018, 10, 28, 13, 25, 58, 936);
             this.creatureInfoInputTester.CreatureName = "";
             this.creatureInfoInputTester.CreatureNote = "";
             this.creatureInfoInputTester.CreatureOwner = "";
@@ -1678,7 +1678,7 @@
             this.creatureInfoInputTester.domesticatedAt = new System.DateTime(2016, 7, 5, 13, 11, 41, 997);
             this.creatureInfoInputTester.father = null;
             this.creatureInfoInputTester.fatherId = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.creatureInfoInputTester.Grown = new System.DateTime(2018, 8, 22, 23, 16, 55, 202);
+            this.creatureInfoInputTester.Grown = new System.DateTime(2018, 10, 28, 13, 25, 58, 937);
             this.creatureInfoInputTester.Location = new System.Drawing.Point(321, 184);
             this.creatureInfoInputTester.mother = null;
             this.creatureInfoInputTester.motherId = new System.Guid("00000000-0000-0000-0000-000000000000");
@@ -2013,7 +2013,7 @@
             // creatureInfoInputExtractor
             // 
             this.creatureInfoInputExtractor.ARKID = ((long)(0));
-            this.creatureInfoInputExtractor.Cooldown = new System.DateTime(2018, 8, 22, 23, 16, 55, 229);
+            this.creatureInfoInputExtractor.Cooldown = new System.DateTime(2018, 10, 28, 13, 25, 58, 967);
             this.creatureInfoInputExtractor.CreatureName = "";
             this.creatureInfoInputExtractor.CreatureNote = "";
             this.creatureInfoInputExtractor.CreatureOwner = "";
@@ -2024,7 +2024,7 @@
             this.creatureInfoInputExtractor.domesticatedAt = new System.DateTime(2016, 7, 5, 13, 12, 15, 968);
             this.creatureInfoInputExtractor.father = null;
             this.creatureInfoInputExtractor.fatherId = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.creatureInfoInputExtractor.Grown = new System.DateTime(2018, 8, 22, 23, 16, 55, 230);
+            this.creatureInfoInputExtractor.Grown = new System.DateTime(2018, 10, 28, 13, 25, 58, 968);
             this.creatureInfoInputExtractor.Location = new System.Drawing.Point(321, 184);
             this.creatureInfoInputExtractor.mother = null;
             this.creatureInfoInputExtractor.motherId = new System.Guid("00000000-0000-0000-0000-000000000000");

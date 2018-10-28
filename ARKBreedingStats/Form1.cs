@@ -54,6 +54,7 @@ namespace ARKBreedingStats
         private bool reactOnSelectionChange;
         private CancellationTokenSource cancelTokenLibrarySelection;
         private bool clearExtractionCreatureData;
+        private DBConnection dbConn;
 
         // OCR stuff
         public ARKOverlay overlay;
@@ -72,6 +73,7 @@ namespace ARKBreedingStats
 
             initLocalization();
             InitializeComponent();
+            dbConn = InitDatabaseConnection();
 
             libraryViews = new Dictionary<string, bool>() {
                 {"Dead", true},
@@ -134,6 +136,19 @@ namespace ARKBreedingStats
 
             tt = new ToolTip();
             reactOnSelectionChange = true;
+
+            
+        }
+
+        private DBConnection InitDatabaseConnection()
+        {
+            DBConnection db = DBConnection.Instance();
+            db.ServerString = "smartbreeder.cqytkhcqzqs9.us-east-2.rds.amazonaws.com";
+            db.DatabaseName = "SmartBreeder";
+            db.UserName = "root";
+            db.Password = "BobrossRuined94!!";
+
+            return db;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -1555,6 +1570,46 @@ namespace ARKBreedingStats
         {
             saveNewCollection();
         }
+
+
+        //todo create and upload collection not just creatures
+        private void uploadCollection()
+        {
+
+        }
+        //todo
+        private void uploadCreature(Creature creature)
+        {
+            dbConn.SendCreature(creature);
+        }
+
+        private Creature downloadCreature(int guid)
+        {
+            //Creature creature = new Creature(species, input.CreatureName, input.CreatureOwner, input.CreatureTribe, input.CreatureSex, getCurrentWildLevels(fromExtractor), getCurrentDomLevels(fromExtractor), te, bred, imprinting, levelStep: levelStep)
+            //{
+            //    // set parents
+            //    Mother = input.mother,
+            //    Father = input.father,
+
+            //    // cooldown-, growing-time
+            //    cooldownUntil = input.Cooldown,
+            //    growingUntil = input.Grown,
+
+            //    note = input.CreatureNote,
+            //    server = input.CreatureServer,
+
+            //    domesticatedAt = input.domesticatedAt,
+            //    addedToLibrary = DateTime.Now,
+            //    mutationsMaternal = input.MutationCounterMother,
+            //    mutationsPaternal = input.MutationCounterFather,
+            //    status = input.CreatureStatus,
+            //    colors = input.RegionColors
+            //};
+            return null;
+        }
+
+
+
 
         private void saveCollection()
         {
