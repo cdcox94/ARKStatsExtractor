@@ -62,60 +62,58 @@ namespace ARKBreedingStats
         public void SendCreature(Creature creature)
         {
             MySqlParameter guid = new MySqlParameter("@guid", MySqlDbType.Int32);
-            MySqlParameter species = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter name = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter sex = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter stauts = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter wildhealth = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter wildstam = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter wildoxygen = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter wildfood = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter wildweight = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter wilddamage = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter wildspeed = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter wildtorpor = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter domhealth = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter domstam = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter domoxygen = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter domfood = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter domweight = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter domdamage = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter domspeed = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter domtorpor = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter tamingEff = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter imprintingBonus = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter owner = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter imprinterName = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter tribe = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter server = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter note = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter arkid = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter isBred = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter fatherGuid = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter motherGuid = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter generation = new MySqlParameter("@", MySqlDbType.Double);
-            MySqlParameter color0 = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter color1 = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter color2 = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter color3 = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter color4 = new MySqlParameter("@", MySqlDbType.VarChar);
-            MySqlParameter color5 = new MySqlParameter("@", MySqlDbType.VarChar);
+            MySqlParameter species = new MySqlParameter("@species", MySqlDbType.VarChar);
+            MySqlParameter name = new MySqlParameter("@name", MySqlDbType.VarChar);
+            MySqlParameter sex = new MySqlParameter("@sex", MySqlDbType.Enum);
+            MySqlParameter stauts = new MySqlParameter("@status", MySqlDbType.Enum);
+            MySqlParameter wildhealth = new MySqlParameter("@wildhealth", MySqlDbType.Int32);
+            MySqlParameter wildstam = new MySqlParameter("@wildstam", MySqlDbType.Int32);
+            MySqlParameter wildoxygen = new MySqlParameter("@wildoxygen", MySqlDbType.Int32);
+            MySqlParameter wildfood = new MySqlParameter("@wildfood", MySqlDbType.Int32);
+            MySqlParameter wildweight = new MySqlParameter("@wildweight", MySqlDbType.Int32);
+            MySqlParameter wilddamage = new MySqlParameter("@wilddamage", MySqlDbType.Int32);
+            MySqlParameter wildspeed = new MySqlParameter("@wildspeed", MySqlDbType.Int32);
+            MySqlParameter wildtorpor = new MySqlParameter("@wildtorpor", MySqlDbType.Int32);
+            MySqlParameter domhealth = new MySqlParameter("@domhealth", MySqlDbType.Int32);
+            MySqlParameter domstam = new MySqlParameter("@domstam", MySqlDbType.Int32);
+            MySqlParameter domoxygen = new MySqlParameter("@domoxygen", MySqlDbType.Int32);
+            MySqlParameter domfood = new MySqlParameter("@domfood", MySqlDbType.Int32);
+            MySqlParameter domweight = new MySqlParameter("@domweight", MySqlDbType.Int32);
+            MySqlParameter domdamage = new MySqlParameter("@domdamage", MySqlDbType.Int32);
+            MySqlParameter domspeed = new MySqlParameter("@domspeed", MySqlDbType.Int32);
+            MySqlParameter domtorpor = new MySqlParameter("@domtorpor", MySqlDbType.Int32);
+            MySqlParameter tamingEff = new MySqlParameter("@tamingEff", MySqlDbType.Double);
+            MySqlParameter imprintingBonus = new MySqlParameter("@imprintingBonus", MySqlDbType.Double);
+            MySqlParameter owner = new MySqlParameter("@owner", MySqlDbType.VarChar);
+            MySqlParameter imprinterName = new MySqlParameter("@imprinterName", MySqlDbType.VarChar);
+            MySqlParameter tribe = new MySqlParameter("@tribe", MySqlDbType.VarChar);
+            MySqlParameter server = new MySqlParameter("@server", MySqlDbType.VarChar);
+            MySqlParameter note = new MySqlParameter("@note", MySqlDbType.Text);
+            MySqlParameter arkid = new MySqlParameter("@arkid", MySqlDbType.Int32);
+            MySqlParameter isBred = new MySqlParameter("@isBred", MySqlDbType.Bit);
+            MySqlParameter fatherGuid = new MySqlParameter("@fatherGuid", MySqlDbType.Int32);
+            MySqlParameter motherGuid = new MySqlParameter("@motherGuid", MySqlDbType.Int32);
+            MySqlParameter generation = new MySqlParameter("@generation", MySqlDbType.Int32);
+            MySqlParameter color0 = new MySqlParameter("@color0", MySqlDbType.Int32);
+            MySqlParameter color1 = new MySqlParameter("@color1", MySqlDbType.Int32);
+            MySqlParameter color2 = new MySqlParameter("@color2", MySqlDbType.Int32);
+            MySqlParameter color3 = new MySqlParameter("@color3", MySqlDbType.Int32);
+            MySqlParameter color4 = new MySqlParameter("@color4", MySqlDbType.Int32);
+            MySqlParameter color5 = new MySqlParameter("@color5", MySqlDbType.Int32);
 
-            MySqlParameter growingUntil = new MySqlParameter("@growingUntil", MySqlDbType.);
-            MySqlParameter cooldownUntil = new MySqlParameter("@cooldownUntil", MySqlDbType.);
-            MySqlParameter domesticatedAt = new MySqlParameter("@domesticatedAt", MySqlDbType.);
-            MySqlParameter addedToLibrary = new MySqlParameter("@addedToLibrary", MySqlDbType.);
-            MySqlParameter neutered = new MySqlParameter("@neutered", MySqlDbType.);
-            MySqlParameter mutationsMaternal = new MySqlParameter("@mutationsMaternal", MySqlDbType.);
-            MySqlParameter mutationsPaternal = new MySqlParameter("@mutationsPaternal", MySqlDbType.);
-            MySqlParameter placeholder = new MySqlParameter("@placeholder", MySqlDbType.);
-            MySqlParameter tags = new MySqlParameter("@tags", MySqlDbType.);
+            MySqlParameter growingUntil = new MySqlParameter("@growingUntil", MySqlDbType.DateTime);
+            MySqlParameter cooldownUntil = new MySqlParameter("@cooldownUntil", MySqlDbType.DateTime);
+            MySqlParameter domesticatedAt = new MySqlParameter("@domesticatedAt", MySqlDbType.DateTime);
+            MySqlParameter addedToLibrary = new MySqlParameter("@addedToLibrary", MySqlDbType.DateTime);
+            MySqlParameter neutered = new MySqlParameter("@neutered", MySqlDbType.Bit);
+            MySqlParameter mutationsMaternal = new MySqlParameter("@mutationsMaternal", MySqlDbType.Int32);
+            MySqlParameter mutationsPaternal = new MySqlParameter("@mutationsPaternal", MySqlDbType.Int32);
+            MySqlParameter placeholder = new MySqlParameter("@placeholder", MySqlDbType.Bit);
+            MySqlParameter tags = new MySqlParameter("@tags", MySqlDbType.Text);
 
 
 
-            string cmdString = "INSERT INTO Creatures (name, tamingeff) Values (@param1, @param2)";
-            
-
+            string cmdString = "INSERT INTO Creatures Values (@guid, @species, @name, @sex, @status, @wildhealth, @wildstam, @wildoxygen, @wildfood, @wildweight, @wilddamage, @wildspeed, @wildtorpor, @domhealth, @domstam, @domoxygen, @domfood, @domweight, @domdamage, @domspeed, @domtorpor, @tamingEff, @imprintingBonus, @owner, @imprinterName, @tribe, @server, @note, @arkid, @isBred, @fatherGuid, @motherGuid, @generation, @color0, @color1, @color2, @color3, @color4, @color5, @growingUntil, @cooldownUntil, @domesticatedAt, @addedToLibrary, @neutered, @mutationsMaternal, @mutationsPaternal, @placeholder, @tags)";
             if (IsConnect())
             {
                 MySqlCommand cmd = new MySqlCommand(cmdString, connection);
