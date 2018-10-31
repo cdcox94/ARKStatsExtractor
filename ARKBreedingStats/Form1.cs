@@ -15,6 +15,11 @@ using ARKBreedingStats.species;
 using ARKBreedingStats.miscClasses;
 using ARKBreedingStats.settings;
 using System.Text.RegularExpressions;
+using System.Data.Sql;
+using System.Data.SqlClient;
+using System.Data.Linq;
+using System.Reflection;
+using System.Data.Linq.Mapping;
 
 namespace ARKBreedingStats
 {
@@ -54,7 +59,7 @@ namespace ARKBreedingStats
         private bool reactOnSelectionChange;
         private CancellationTokenSource cancelTokenLibrarySelection;
         private bool clearExtractionCreatureData;
-        private DBConnection dbConn;
+        private LinqConnect linqConnect = new LinqConnect();
 
         // OCR stuff
         public ARKOverlay overlay;
@@ -73,7 +78,7 @@ namespace ARKBreedingStats
 
             initLocalization();
             InitializeComponent();
-            dbConn = InitDatabaseConnection();
+            //dbConn = InitDatabaseConnection();
 
             libraryViews = new Dictionary<string, bool>() {
                 {"Dead", true},
@@ -139,17 +144,7 @@ namespace ARKBreedingStats
 
             
         }
-
-        private DBConnection InitDatabaseConnection()
-        {
-            DBConnection db = DBConnection.Instance();
-            db.ServerString = "smartbreeder.cqytkhcqzqs9.us-east-2.rds.amazonaws.com";
-            db.DatabaseName = "SmartBreeder";
-            db.UserName = "root";
-            db.Password = "BobrossRuined94!!";
-
-            return db;
-        }
+       
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -222,7 +217,7 @@ namespace ARKBreedingStats
             if (lwvs != null)
             {
                 lwvs.SortColumn = Properties.Settings.Default.listViewSortCol;
-                lwvs.Order = (Properties.Settings.Default.listViewSortAsc ? SortOrder.Ascending : SortOrder.Descending);
+                lwvs.Order = (Properties.Settings.Default.listViewSortAsc ? System.Windows.Forms.SortOrder.Ascending : System.Windows.Forms.SortOrder.Descending);
             }
 
             // load statweights
@@ -408,6 +403,9 @@ namespace ARKBreedingStats
 
         delegate void collectionChangedCallback();
 
+
+
+
         public void collectionChanged()
         {
             if (creatureBoxListView.InvokeRequired)
@@ -420,6 +418,9 @@ namespace ARKBreedingStats
                 loadCollectionFile(currentFileName, true, true);
             }
         }
+
+
+
 
         private void clearAll(bool clearExtraCreatureData = true)
         {
@@ -1271,6 +1272,8 @@ namespace ARKBreedingStats
                 creatureCollection.creatures.Remove(placeholder);
 
             creatureCollection.creatures.Add(creature);
+            uploadCreature(creature);
+
 
             // if new creature is parent of a creature, update link
             var motherOf = creatureCollection.creatures.Where(c => c.motherGuid == creature.guid).ToList();
@@ -1580,32 +1583,15 @@ namespace ARKBreedingStats
         //todo
         private void uploadCreature(Creature creature)
         {
-            dbConn.SendCreature(creature);
+            linqConnect.dB.Creatures.InsertOnSubmit(creature);
+            linqConnect.dB.SubmitChanges();
         }
 
-        private Creature downloadCreature(int guid)
+        private Creature downloadCreature(string guid)
         {
-            //Creature creature = new Creature(species, input.CreatureName, input.CreatureOwner, input.CreatureTribe, input.CreatureSex, getCurrentWildLevels(fromExtractor), getCurrentDomLevels(fromExtractor), te, bred, imprinting, levelStep: levelStep)
-            //{
-            //    // set parents
-            //    Mother = input.mother,
-            //    Father = input.father,
-
-            //    // cooldown-, growing-time
-            //    cooldownUntil = input.Cooldown,
-            //    growingUntil = input.Grown,
-
-            //    note = input.CreatureNote,
-            //    server = input.CreatureServer,
-
-            //    domesticatedAt = input.domesticatedAt,
-            //    addedToLibrary = DateTime.Now,
-            //    mutationsMaternal = input.MutationCounterMother,
-            //    mutationsPaternal = input.MutationCounterFather,
-            //    status = input.CreatureStatus,
-            //    colors = input.RegionColors
-            //};
-            return null;
+            Table<Creature> Creatures = linqConnect.dB.GetTable<Creature>();
+            IQueryable<Creature> creatureQuery = from creat in Creatures where creat.dbGuid == guid.ToString() select creat;
+            return creatureQuery.First<Creature>();
         }
 
 
@@ -2386,7 +2372,7 @@ namespace ARKBreedingStats
             if (lwvs != null)
             {
                 Properties.Settings.Default.listViewSortCol = lwvs.SortColumn;
-                Properties.Settings.Default.listViewSortAsc = (lwvs.Order == SortOrder.Ascending);
+                Properties.Settings.Default.listViewSortAsc = (lwvs.Order == System.Windows.Forms.SortOrder.Ascending);
             }
 
             // save custom statweights
@@ -5497,6 +5483,12 @@ namespace ARKBreedingStats
             pedigree1.SetLocalizations();
             tamingControl1.SetLocalizations();
             breedingPlan1.SetLocalizations();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            creatureCollection.creatures.Add(downloadCreature("0a18e173-2912-139c-0000-000000000000"));
+            updateCreatureListings();
         }
 
         /// <summary>

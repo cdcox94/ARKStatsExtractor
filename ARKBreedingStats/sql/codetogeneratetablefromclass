@@ -1,0 +1,13 @@
+// code to generate table from class
+
+
+
+            LinqConnect linqConnect = new LinqConnect();
+            var metaTable = linqConnect.dB.Mapping.GetTable(typeof(Creature));
+            Debug.Assert(metaTable != null);
+
+            var typeName = "System.Data.Linq.SqlClient.SqlBuilder";
+            var type = typeof(DataContext).Assembly.GetType(typeName);
+            var bf = BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.InvokeMethod;
+            var sql = type.InvokeMember("GetCreateTableCommand", bf, null, null, new[] { metaTable });
+            Console.WriteLine(sql);
