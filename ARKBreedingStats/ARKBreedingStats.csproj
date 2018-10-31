@@ -66,6 +66,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Transactions" />
@@ -88,7 +89,6 @@
     <Compile Include="AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBConnection.cs" />
     <Compile Include="ExportedCreatureList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +96,7 @@
       <DependentUpon>ExportedCreatureList.cs</DependentUpon>
     </Compile>
     <Compile Include="ImportExported.cs" />
+    <Compile Include="LinqConnect.cs" />
     <Compile Include="local\strings.fr.Designer.cs">
       <DependentUpon>strings.fr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -640,7 +641,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
